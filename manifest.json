@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Gemini Screen Reader",
+  "version": "1.0",
+  "description": "Uses Gemini 2.5 Flash to describe the current page for blind users.",
+  "permissions": ["scripting", "tabs", "activeTab", "tts"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Describe this page with Gemini"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
